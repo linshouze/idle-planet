@@ -56,3 +56,11 @@ prompts/  小星提示词（纯文本，热加载，可自行调优）
 ## 许可证
 
 MIT
+
+## 开发
+
+```bash
+npm test                    # 后端全部用例（node:test，含状态机/并发/隐私断言/AI 降级）
+cd server && npx tsc --noEmit   # 后端类型检查
+cd web && npx tsc --noEmit      # 前端类型检查
+```
