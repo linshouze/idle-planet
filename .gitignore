@@ -1,0 +1,36 @@
+node_modules/
+data/
+dist/
+web/dist/
+*.log
+.env
+
+# 本地环境配置（含 AI key，不提交）
+.env
+
+# 内部工作日志与文档快照，不发布
+.workbuddy/
+# 便携部署包（含 data 副本与 node_modules），不发布
+idle-planet-portable/
+idle-planet-portable.zip
+
+# 内部材料不发布
+docs/
+shaping/
+prototype/
+AGENT-CONTEXT.md
+设计文档-v2.md
+闲置星球-报名填写推荐.md
+闲置星球-项目介绍与一周MVP设计方案.md
+闲置星球内部交易平台界面.png
+scripts/idle-planet-portable/
+
+# 原始聊天记录等素材不发布
+*.docx
+*.doc
+
+# 图片等二进制资源不进仓库（横幅图本地放置，代码有渐变兜底）
+web/public/*.png
+
+# 本地部署脚本，不发布
+scripts/
