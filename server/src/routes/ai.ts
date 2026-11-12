@@ -133,8 +133,15 @@ export function aiRoutes(db: DatabaseSync, uploadDir: string, opts: { chat?: (cf
     const cfg = aiConfig()!;
     const system = loadPrompt('draft');
     if (!system) return c.json({ available: false });
-    const raw = await chatFn(cfg, { system, user: userPrompt, contentBlocks: imageBlock, maxTokens: 768, timeoutMs: 20_000 });
-    const result = extractJson<DraftResult>(raw);
+    const chatOpts = { system, user: userPrompt, contentBlocks: imageBlock, maxTokens: 2048, timeoutMs: 20_000 };
+    let raw = await chatFn(cfg, chatOpts);
+    let result = extractJson<DraftResult>(raw);
+    // 输出被截断或格式跑偏时自动重试一次，仍失败才降级
+    if (!result) {
+      raw = await chatFn(cfg, chatOpts);
+      result = extractJson<DraftResult>(raw);
+      if (!result) console.warn('[ai] draft 解析失败（两次）:', (raw ?? 'null').slice(0, 300));
+    }
     if (!result) return c.json({ available: false });
     // 分类不在列表里就丢弃，让用户自己选
     if (result.categoryId && !categories.some((x) => x.id === result.categoryId)) delete result.categoryId;
