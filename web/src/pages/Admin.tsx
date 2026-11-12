@@ -6,7 +6,7 @@ import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContai
 import { api, patch, post } from '../api/client';
 import type { AdminCategory, AdminItem, AdminUser, Dashboard, StaleDeal } from '../api/types';
 import { useAct, useAuth, useConfirm } from '../auth';
-import { XingPanel } from '../components/Xing';
+import { XingAvatar, XingBadge, XingPanel } from '../components/Xing';
 import { ITEM_STATUS, RISK_TYPE_LABEL, formatDateTime, priceText } from '../format';
 
 /** 看板上的 AI 价值报告：把上方真实统计数据交给 AI 生成一段可念的运营总结。 */
@@ -40,6 +40,7 @@ function AiReport({ from, to, includeDemo }: { from: string; to?: string; includ
       </Button>
       {report && (
         <XingPanel className="ai-report-body">
+          <div className="head"><XingAvatar /> <XingBadge label="小星价值报告" /></div>
           {report}
           <div className="footnote">以上报告由小星基于本页真实统计数据生成，数字与看板一致。</div>
         </XingPanel>

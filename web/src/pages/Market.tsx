@@ -5,7 +5,7 @@ import { api } from '../api/client';
 import type { Category, ItemList } from '../api/types';
 import { Hero } from '../components/Hero';
 import { ItemCardView } from '../components/ItemCardView';
-import { XingBadge } from '../components/Xing';
+import { XingAvatar, XingBadge } from '../components/Xing';
 import { LeaderboardStrip } from './Leaderboard';
 
 const PAGE = 20;
@@ -20,6 +20,7 @@ function AiFallback({ ai }: { ai: NonNullable<ItemList['ai']> }) {
   return (
     <div className="ai-search">
       <div className="ai-head">
+        <XingAvatar />
         <XingBadge label="小星语义搜索" />
         没有匹配关键词的结果，小星理解为：<b>{ai.understanding}</b>
       </div>

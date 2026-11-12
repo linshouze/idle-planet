@@ -7,7 +7,7 @@ import { api, patch, post } from '../api/client';
 import type { AiDraft, AiDraftResponse, Category, ItemDetail, Risk, RiskCheckResponse } from '../api/types';
 import { useAct, useAuth } from '../auth';
 import { CONDITION_LABEL, beijingToday, compressImage } from '../format';
-import { XingBadge, XingPanel } from '../components/Xing';
+import { XingAvatar, XingBadge, XingPanel } from '../components/Xing';
 
 interface Img {
   id: number;
@@ -214,6 +214,7 @@ function AiAssistant({ form, images, initialText, onNewPrice, onRisk, onVoucherC
   return (
     <XingPanel working={loading}>
       <div className="ai-head">
+        <XingAvatar talking={loading} />
         <XingBadge />
         <span className="muted">上传图片即可识别，自动生成标题、描述、分类和参考价；也可以再补一句话（选填），小星会结合两者识别。生成内容需你确认。</span>
       </div>

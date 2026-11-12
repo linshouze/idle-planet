@@ -34,3 +34,8 @@ web/public/*.png
 
 # 本地部署脚本，不发布
 scripts/
+
+# 并行会话的视频工程与参赛文案，不发布
+remotion-videos/
+闲置星球-广告视频方案.md
+闲置星球-拉票文案.md

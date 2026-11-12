@@ -7,7 +7,7 @@ import type { AskResponse, BuyerDetail, ItemDetail as Detail, NegoTurn, Negotiat
 import { useAct, useAuth, useCompleteDeal, useConfirm } from '../auth';
 import { Contact } from '../components/Contact';
 import { PlantArt } from '../components/Art';
-import { XingBadge, XingPanel } from '../components/Xing';
+import { XingAvatar, XingBadge, XingPanel } from '../components/Xing';
 import { CLOSE_REASON, CONDITION_LABEL, ITEM_STATUS, REQUEST_STATUS, expiryView, faceValueText, formatDateTime, timeAgo, voucherDue } from '../format';
 
 /** 成交价口径：卖家降价到低于谈成价时按新挂牌价。 */
@@ -371,7 +371,7 @@ function AskXingPanel({ item, onWriteToRequest }: { item: BuyerDetail; onWriteTo
 
   return (
     <XingPanel>
-      <div className="head">
+      <div className="head"><XingAvatar />
         <XingBadge /> 对这件东西有疑问？问问小星
       </div>
       {item.myQuestions.map((q, i) => (
@@ -621,7 +621,7 @@ function WishMatchPanel({ item }: { item: SellerDetail }) {
   if (panel.matching) {
     return (
       <XingPanel working>
-        <div className="head"><XingBadge /> 小星正在匹配心愿…</div>
+        <div className="head"><XingAvatar talking /> <XingBadge /> 小星正在匹配心愿…</div>
       </XingPanel>
     );
   }
